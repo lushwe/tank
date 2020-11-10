@@ -18,6 +18,8 @@ public class Tank {
 
     private Dir dir = Dir.DOWN;
 
+    private boolean moving = false;
+
     public Tank(int x, int y) {
         this.x = x;
         this.y = y;
@@ -35,6 +37,16 @@ public class Tank {
     public void paint(Graphics g) {
         // 画一个矩形
         g.fillRect(x, y, 50, 50);
+
+        move();
+
+    }
+
+    private void move() {
+
+        if (!moving) {
+            return;
+        }
 
         switch (dir) {
             case LEFT:
@@ -75,5 +87,13 @@ public class Tank {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
     }
 }

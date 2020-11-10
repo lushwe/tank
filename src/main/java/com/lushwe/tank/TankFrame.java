@@ -103,6 +103,9 @@ public class TankFrame extends Frame {
          * 设置主坦克方向
          */
         private void setMainTankDir() {
+
+            myTank.setMoving(true);
+
             if (left) {
                 myTank.setDir(Dir.LEFT);
             }
