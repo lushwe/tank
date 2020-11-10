@@ -16,10 +16,10 @@ import java.awt.event.WindowEvent;
  */
 public class TankFrame extends Frame {
 
-    private static final int SPEED = 10;
-    private int x = 200;
-    private int y = 200;
-    Dir dir = Dir.LEFT;
+    /**
+     * 主站坦克
+     */
+    Tank myTank = new Tank(200, 200);
 
 
     public TankFrame() {
@@ -39,23 +39,10 @@ public class TankFrame extends Frame {
     public void paint(Graphics g) {
 
         System.out.println("paint");
-        // 画一个矩形
-        g.fillRect(x, y, 50, 50);
 
-        switch (dir) {
-            case LEFT:
-                x -= SPEED;
-                break;
-            case UP:
-                y -= SPEED;
-                break;
-            case RIGHT:
-                x += SPEED;
-                break;
-            case DOWN:
-                y += SPEED;
-                break;
-        }
+        //
+        myTank.paint(g);
+
     }
 
     /**
@@ -116,10 +103,18 @@ public class TankFrame extends Frame {
          * 设置主坦克方向
          */
         private void setMainTankDir() {
-            if (left) dir = Dir.LEFT;
-            if (up) dir = Dir.UP;
-            if (right) dir = Dir.RIGHT;
-            if (down) dir = Dir.DOWN;
+            if (left) {
+                myTank.setDir(Dir.LEFT);
+            }
+            if (up) {
+                myTank.setDir(Dir.UP);
+            }
+            if (right) {
+                myTank.setDir(Dir.RIGHT);
+            }
+            if (down) {
+                myTank.setDir(Dir.DOWN);
+            }
         }
     }
 
