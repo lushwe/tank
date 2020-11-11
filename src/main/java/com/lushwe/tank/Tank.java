@@ -21,12 +21,15 @@ public class Tank {
 
     private Dir dir;
 
+    private TankFrame tf;
+
     private boolean moving = false;
 
-    public Tank(int x, int y, Dir dir) {
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     /**
@@ -66,6 +69,13 @@ public class Tank {
         }
     }
 
+    /**
+     * 发射子弹
+     */
+    public void fire() {
+        tf.myBullet = new Bullet(this.x, this.y, this.dir);
+    }
+
     // getter setter
     public int getX() {
         return x;
@@ -98,4 +108,5 @@ public class Tank {
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
+
 }
