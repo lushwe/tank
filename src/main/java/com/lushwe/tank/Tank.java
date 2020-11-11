@@ -1,5 +1,6 @@
 package com.lushwe.tank;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -11,19 +12,16 @@ import java.awt.Graphics;
  */
 public class Tank {
 
-    private static final int SPEED = 10;
+    private static final int SPEED = 5;
+    private static int WIDTH = 30;
+    private static int HEIGHT = 30;
 
     private int x;
     private int y;
 
-    private Dir dir = Dir.DOWN;
+    private Dir dir;
 
     private boolean moving = false;
-
-    public Tank(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public Tank(int x, int y, Dir dir) {
         this.x = x;
@@ -35,8 +33,12 @@ public class Tank {
      * @param g
      */
     public void paint(Graphics g) {
-        // 画一个矩形
-        g.fillRect(x, y, 50, 50);
+
+        Color color = g.getColor();
+
+        g.setColor(Color.YELLOW);
+        g.fillRect(x, y, WIDTH, HEIGHT);
+        g.setColor(color);
 
         move();
 
