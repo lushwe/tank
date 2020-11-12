@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class TankFrame extends Frame {
 
-    private static final int GAME_WIDTH = 800;
-    private static final int GAME_HEIGHT = 800;
+    static final int GAME_WIDTH = 800;
+    static final int GAME_HEIGHT = 800;
 
     /**
      * 坦克

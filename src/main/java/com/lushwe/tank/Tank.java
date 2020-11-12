@@ -73,7 +73,7 @@ public class Tank {
      * 发射子弹
      */
     public void fire() {
-        tf.bulletList.add(new Bullet(this.x, this.y, this.dir));
+        tf.bulletList.add(new Bullet(this.x, this.y, this.dir, this.tf));
     }
 
     // getter setter

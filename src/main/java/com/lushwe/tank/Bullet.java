@@ -21,16 +21,24 @@ public class Bullet {
 
     private Dir dir;
 
-    public Bullet(int x, int y, Dir dir) {
+    private TankFrame tf;
+
+    private boolean live = true;
+
+    public Bullet(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     /**
      * @param g
      */
     public void paint(Graphics g) {
+        if (!live) {
+            tf.bulletList.remove(this);
+        }
 
         Color color = g.getColor();
 
@@ -57,6 +65,10 @@ public class Bullet {
             case DOWN:
                 y += SPEED;
                 break;
+        }
+
+        if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
+            live = false;
         }
     }
 }
