@@ -1,6 +1,5 @@
 package com.lushwe.tank;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -13,8 +12,10 @@ import java.awt.Graphics;
 public class Tank {
 
     private static final int SPEED = 5;
-    private static int WIDTH = 30;
-    private static int HEIGHT = 30;
+
+    public static int WIDTH = ResourceMgr.tankD.getWidth();
+    public static int HEIGHT = ResourceMgr.tankD.getHeight();
+
 
     private int x;
     private int y;
@@ -37,11 +38,20 @@ public class Tank {
      */
     public void paint(Graphics g) {
 
-        Color color = g.getColor();
-
-        g.setColor(Color.YELLOW);
-        g.fillRect(x, y, WIDTH, HEIGHT);
-        g.setColor(color);
+        switch (dir) {
+            case LEFT:
+                g.drawImage(ResourceMgr.tankL, x, y, null);
+                break;
+            case UP:
+                g.drawImage(ResourceMgr.tankU, x, y, null);
+                break;
+            case RIGHT:
+                g.drawImage(ResourceMgr.tankR, x, y, null);
+                break;
+            case DOWN:
+                g.drawImage(ResourceMgr.tankD, x, y, null);
+                break;
+        }
 
         move();
 
@@ -73,7 +83,11 @@ public class Tank {
      * 发射子弹
      */
     public void fire() {
-        tf.bulletList.add(new Bullet(this.x, this.y, this.dir, this.tf));
+
+        int x = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
+        int y = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
+
+        tf.bulletList.add(new Bullet(x, y, this.dir, this.tf));
     }
 
     // getter setter
