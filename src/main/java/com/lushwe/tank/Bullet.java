@@ -1,7 +1,7 @@
 package com.lushwe.tank;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  * 说明：子弹对象
@@ -24,7 +24,10 @@ public class Bullet {
 
     private TankFrame tf;
 
-    private boolean live = true;
+    /**
+     * 活着
+     */
+    private boolean living = true;
 
     public Bullet(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
@@ -34,10 +37,13 @@ public class Bullet {
     }
 
     /**
+     * 画自己
+     *
      * @param g
      */
     public void paint(Graphics g) {
-        if (!live) {
+
+        if (!living) {
             tf.bulletList.remove(this);
         }
 
@@ -56,10 +62,14 @@ public class Bullet {
                 break;
         }
 
+        // 移动
         move();
 
     }
 
+    /**
+     * 移动
+     */
     private void move() {
 
         switch (dir) {
@@ -78,7 +88,32 @@ public class Bullet {
         }
 
         if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
-            live = false;
+            // 移出窗口，死亡
+            living = false;
         }
+    }
+
+    /**
+     * 碰撞
+     *
+     * @param tank
+     */
+    public void collideWith(Tank tank) {
+
+        Rectangle rectangle1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
+        Rectangle rectangle2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
+
+        if (rectangle1.intersects(rectangle2)) {
+            this.die();
+            tank.die();
+        }
+
+    }
+
+    /**
+     * 死亡
+     */
+    private void die() {
+        this.living = false;
     }
 }

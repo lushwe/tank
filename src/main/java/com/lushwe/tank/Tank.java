@@ -24,7 +24,15 @@ public class Tank {
 
     private TankFrame tf;
 
+    /**
+     * 移动中
+     */
     private boolean moving = false;
+
+    /**
+     * 活着
+     */
+    private boolean living = true;
 
     public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
@@ -34,9 +42,15 @@ public class Tank {
     }
 
     /**
+     * 画自己
+     *
      * @param g
      */
     public void paint(Graphics g) {
+
+        if (!living) {
+            tf.tankList.remove(this);
+        }
 
         switch (dir) {
             case LEFT:
@@ -53,10 +67,14 @@ public class Tank {
                 break;
         }
 
+        // 移动
         move();
 
     }
 
+    /**
+     * 移动
+     */
     private void move() {
 
         if (!moving) {
@@ -77,6 +95,11 @@ public class Tank {
                 y += SPEED;
                 break;
         }
+
+//        if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
+//            // 移出窗口，死亡
+//            living = false;
+//        }
     }
 
     /**
@@ -90,7 +113,14 @@ public class Tank {
         tf.bulletList.add(new Bullet(x, y, this.dir, this.tf));
     }
 
-    // getter setter
+    /**
+     * 死亡
+     */
+    public void die() {
+        this.living = false;
+    }
+
+    // =========================== getter/setter method ===========================
     public int getX() {
         return x;
     }
