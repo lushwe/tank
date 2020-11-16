@@ -26,7 +26,7 @@ public class TankFrame extends Frame {
     /**
      * 坦克
      */
-    Tank myTank = new Tank(200, 200, Dir.DOWN, this);
+    Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);
     /**
      * 敌人坦克
      */

@@ -1,6 +1,7 @@
 package com.lushwe.tank;
 
 import java.awt.Graphics;
+import java.util.Random;
 
 /**
  * 说明：坦克对象
@@ -11,7 +12,7 @@ import java.awt.Graphics;
  */
 public class Tank {
 
-    private static final int SPEED = 5;
+    private static final int SPEED = 1;
 
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
@@ -20,24 +21,41 @@ public class Tank {
     private int x;
     private int y;
 
+    /**
+     * 方向
+     */
     private Dir dir;
 
+    /**
+     * 阵营
+     */
+    private Group group;
+
+    /**
+     * 窗口
+     */
     private TankFrame tf;
 
     /**
      * 移动中
      */
-    private boolean moving = false;
+    private boolean moving = true;
 
     /**
      * 活着
      */
     private boolean living = true;
 
-    public Tank(int x, int y, Dir dir, TankFrame tf) {
+    /**
+     * 随机变量
+     */
+    private Random random = new Random();
+
+    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -96,6 +114,10 @@ public class Tank {
                 break;
         }
 
+        if (random.nextInt(10) > 8) {
+            this.fire();
+        }
+
 //        if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
 //            // 移出窗口，死亡
 //            living = false;
@@ -110,7 +132,7 @@ public class Tank {
         int x = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
         int y = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
 
-        tf.bulletList.add(new Bullet(x, y, this.dir, this.tf));
+        tf.bulletList.add(new Bullet(x, y, this.dir, this.group, this.tf));
     }
 
     /**
@@ -143,6 +165,14 @@ public class Tank {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public boolean isMoving() {

@@ -14,7 +14,7 @@ public class Main {
         TankFrame tf = new TankFrame();
 
         for (int i = 0; i < 5; i++) {
-            tf.tankList.add(new Tank(100 + 100 * i, 400, Dir.DOWN, tf));
+            tf.tankList.add(new Tank(100 + 100 * i, 400, Dir.DOWN, Group.BAD, tf));
         }
 
         while (true) {
