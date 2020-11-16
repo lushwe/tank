@@ -13,6 +13,10 @@ public class Main {
 
         TankFrame tf = new TankFrame();
 
+        for (int i = 0; i < 5; i++) {
+            tf.enemyTankList.add(new Tank(100 + 100 * i, 400, Dir.DOWN, tf));
+        }
+
         while (true) {
             Thread.sleep(100L);
             tf.repaint();

@@ -28,6 +28,10 @@ public class TankFrame extends Frame {
      */
     Tank myTank = new Tank(200, 200, Dir.DOWN, this);
     /**
+     * 敌人坦克
+     */
+    List<Tank> enemyTankList = new ArrayList<>();
+    /**
      * 子弹
      */
     List<Bullet> bulletList = new ArrayList<>();
@@ -77,6 +81,11 @@ public class TankFrame extends Frame {
 
         // 画坦克
         myTank.paint(g);
+
+        // 画坦克
+        for (int i = 0; i < enemyTankList.size(); i++) {
+            enemyTankList.get(i).paint(g);
+        }
 
         // 画子弹
         for (int i = 0; i < bulletList.size(); i++) {
