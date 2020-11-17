@@ -27,14 +27,21 @@ public class TankFrame extends Frame {
      * 坦克
      */
     Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);
+
     /**
      * 敌人坦克
      */
     List<Tank> tankList = new ArrayList<>();
+
     /**
      * 子弹
      */
     List<Bullet> bulletList = new ArrayList<>();
+
+    /**
+     * 爆炸
+     */
+    Explode explode = new Explode(100, 100, this);
 
 
     public TankFrame() {
@@ -99,6 +106,8 @@ public class TankFrame extends Frame {
                 bulletList.get(i).collideWith(tankList.get(j));
             }
         }
+
+        explode.paint(g);
     }
 
     /**

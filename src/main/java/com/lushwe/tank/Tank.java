@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Tank {
 
-    private static final int SPEED = 1;
+    private static final int SPEED = 2;
 
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
@@ -114,14 +114,10 @@ public class Tank {
                 break;
         }
 
+        // 坦克随机开火
         if (random.nextInt(10) > 8) {
             this.fire();
         }
-
-//        if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
-//            // 移出窗口，死亡
-//            living = false;
-//        }
     }
 
     /**
