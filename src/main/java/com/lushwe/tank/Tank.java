@@ -14,8 +14,8 @@ public class Tank {
 
     private static final int SPEED = 2;
 
-    public static int WIDTH = ResourceMgr.tankD.getWidth();
-    public static int HEIGHT = ResourceMgr.tankD.getHeight();
+    public static int WIDTH = ResourceMgr.tankU.getWidth();
+    public static int HEIGHT = ResourceMgr.tankU.getHeight();
 
 
     private int x;
@@ -129,6 +129,10 @@ public class Tank {
         int y = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
 
         tf.bulletList.add(new Bullet(x, y, this.dir, this.group, this.tf));
+
+        if (this.group == Group.GOOD) {
+            new Thread(() -> new Audio("audio/tank_fire.wav").play()).start();
+        }
     }
 
     /**
