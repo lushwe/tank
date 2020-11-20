@@ -12,7 +12,7 @@ import java.awt.Rectangle;
  */
 public class Bullet {
 
-    private static final int SPEED = 10;
+    private static final int SPEED = 6;
 
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
