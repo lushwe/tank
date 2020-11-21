@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class TankFrame extends Frame {
 
-    static final int GAME_WIDTH = 800;
-    static final int GAME_HEIGHT = 800;
+    static final int GAME_WIDTH = 1080;
+    static final int GAME_HEIGHT = 960;
 
     /**
      * 坦克
      */
-    Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);
+    Tank myTank = new Tank(200, 100, Dir.DOWN, Group.GOOD, this);
 
     /**
      * 敌人坦克
@@ -140,6 +140,7 @@ public class TankFrame extends Frame {
             }
 
             setMainTankDir();
+
         }
 
         @Override
