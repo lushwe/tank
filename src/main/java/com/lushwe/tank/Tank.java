@@ -115,9 +115,19 @@ public class Tank {
         }
 
         // 坦克随机开火
-        if (random.nextInt(10) > 8) {
+        if (this.group == Group.BAD && random.nextInt(100) > 95) {
             this.fire();
         }
+        if (this.group == Group.BAD && random.nextInt(100) > 95) {
+            randomDir();
+        }
+    }
+
+    /**
+     * 随机移动
+     */
+    private void randomDir() {
+        this.dir = Dir.values()[random.nextInt(4)];
     }
 
     /**
