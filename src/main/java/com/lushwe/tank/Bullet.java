@@ -110,9 +110,14 @@ public class Bullet {
         Rectangle rectangle2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
 
         if (rectangle1.intersects(rectangle2)) {
+            // 子弹死亡
             this.die();
+            // 坦克死亡
             tank.die();
-            this.tf.explodes.add(new Explode(x, y, tf));
+            // 添加爆炸
+            int x = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
+            int y = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
+            this.tf.explodes.add(new Explode(x, y, this.tf));
         }
 
     }
