@@ -1,6 +1,7 @@
 package com.lushwe.tank;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 /**
@@ -17,6 +18,7 @@ public class Tank {
     public static int WIDTH = ResourceMgr.goodTankU.getWidth();
     public static int HEIGHT = ResourceMgr.goodTankU.getHeight();
 
+    Rectangle rect = new Rectangle();
 
     private int x;
     private int y;
@@ -57,6 +59,11 @@ public class Tank {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     /**
@@ -133,6 +140,10 @@ public class Tank {
 
         // 边界检查
         boundsCheck();
+
+        // 更新 rect
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
     /**

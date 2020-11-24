@@ -17,6 +17,8 @@ public class Bullet {
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
 
+    Rectangle rect = new Rectangle();
+
     private int x;
     private int y;
 
@@ -36,6 +38,11 @@ public class Bullet {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     /**
@@ -89,6 +96,10 @@ public class Bullet {
                 break;
         }
 
+        // 更新 rect
+        rect.x = this.x;
+        rect.y = this.y;
+
         if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
             // 移出窗口，死亡
             living = false;
@@ -106,10 +117,7 @@ public class Bullet {
             return;
         }
 
-        Rectangle rectangle1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
-        Rectangle rectangle2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
-
-        if (rectangle1.intersects(rectangle2)) {
+        if (this.rect.intersects(tank.rect)) {
             // 子弹死亡
             this.die();
             // 坦克死亡
