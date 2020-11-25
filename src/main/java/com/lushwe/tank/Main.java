@@ -13,12 +13,14 @@ public class Main {
 
         TankFrame tf = new TankFrame();
 
+        int initTankCount = PropertyMgr.getInt("initTankCount");
+
         // 初始化敌方坦克
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < initTankCount; i++) {
             tf.tankList.add(new Tank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, tf));
         }
 
-        new Thread(()->new Audio("audio/war1.wav").loop()).start();
+        new Thread(() -> new Audio("audio/war1.wav").loop()).start();
 
         while (true) {
             Thread.sleep(25L);
