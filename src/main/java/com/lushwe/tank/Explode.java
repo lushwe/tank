@@ -16,9 +16,7 @@ public class Explode {
 
     private int x, y;
 
-    private boolean living = true;
-
-    TankFrame tf = null;
+    TankFrame tf;
 
     private int step = 0;
 
