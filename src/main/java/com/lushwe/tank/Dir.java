@@ -1,7 +1,7 @@
 package com.lushwe.tank;
 
 /**
- * 说明：坦克方向枚举
+ * 说明：方向枚举
  *
  * @author Jack Liu
  * @date 2020-11-02 23:10
