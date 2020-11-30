@@ -22,9 +22,19 @@ public class Bullet {
     private int x;
     private int y;
 
+    /**
+     * 方向
+     */
     private Dir dir;
+
+    /**
+     * 阵营
+     */
     private Group group;
 
+    /**
+     * 窗口
+     */
     private TankFrame tf;
 
     /**
