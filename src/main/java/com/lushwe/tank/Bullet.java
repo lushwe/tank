@@ -32,22 +32,19 @@ public class Bullet {
      */
     private Group group;
 
-    /**
-     * 窗口
-     */
-    private TankFrame tf;
+    private GameModel gm;
 
     /**
      * 活着
      */
     private boolean living = true;
 
-    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public Bullet(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
@@ -63,7 +60,7 @@ public class Bullet {
     public void paint(Graphics g) {
 
         if (!living) {
-            tf.bulletList.remove(this);
+            gm.bulletList.remove(this);
         }
 
         switch (dir) {
@@ -110,7 +107,7 @@ public class Bullet {
         rect.x = this.x;
         rect.y = this.y;
 
-        if (x < 0 || y < 0 || x > tf.GAME_WIDTH || y > tf.GAME_HEIGHT) {
+        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
             // 移出窗口，死亡
             living = false;
         }
@@ -135,7 +132,7 @@ public class Bullet {
             // 添加爆炸
             int x = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
             int y = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            this.tf.explodes.add(new Explode(x, y, this.tf));
+            this.gm.explodes.add(new Explode(x, y, this.gm));
         }
 
     }
