@@ -8,8 +8,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 说明：坦克大战主页
@@ -24,25 +22,9 @@ public class TankFrame extends Frame {
     static final int GAME_HEIGHT = 960;
 
     /**
-     * 坦克
+     * 游戏模型
      */
-    Tank myTank = new Tank(200, 100, Dir.DOWN, Group.GOOD, this);
-
-    /**
-     * 敌人坦克
-     */
-    List<Tank> tankList = new ArrayList<>();
-
-    /**
-     * 子弹
-     */
-    List<Bullet> bulletList = new ArrayList<>();
-
-    /**
-     * 爆炸
-     */
-    List<Explode> explodes = new ArrayList<>();
-
+    GameModel gm = new GameModel();
 
     public TankFrame() {
         this.setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -59,7 +41,7 @@ public class TankFrame extends Frame {
 
 
     // 双缓存解决闪烁问题
-    Image offScreenImage = null;
+    private Image offScreenImage = null;
 
     @Override
     public void update(Graphics g) {
@@ -78,40 +60,8 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics g) {
 
-        System.out.println("paint");
+        gm.paint(g);
 
-        // 画出子弹数量
-        Color color = g.getColor();
-        g.setColor(Color.WHITE);
-        g.drawString("子弹数量：" + bulletList.size(), 10, 50);
-        g.drawString("敌人数量：" + tankList.size(), 10, 70);
-        g.drawString("爆炸数量：" + explodes.size(), 10, 90);
-        g.setColor(color);
-
-        // 画坦克
-        myTank.paint(g);
-
-        // 画坦克
-        for (int i = 0; i < tankList.size(); i++) {
-            tankList.get(i).paint(g);
-        }
-
-        // 画子弹
-        for (int i = 0; i < bulletList.size(); i++) {
-            bulletList.get(i).paint(g);
-        }
-
-        // 画爆炸
-        for (int i = 0; i < explodes.size(); i++) {
-            explodes.get(i).paint(g);
-        }
-
-        // 碰撞检测
-        for (int i = 0; i < bulletList.size(); i++) {
-            for (int j = 0; j < tankList.size(); j++) {
-                bulletList.get(i).collideWith(tankList.get(j));
-            }
-        }
     }
 
     /**
@@ -164,7 +114,7 @@ public class TankFrame extends Frame {
                     down = false;
                     break;
                 case KeyEvent.VK_CONTROL:
-                    myTank.fire();
+                    gm.getMainTank().fire();
                     break;
                 default:
                     break;
@@ -178,19 +128,21 @@ public class TankFrame extends Frame {
          */
         private void setMainTankDir() {
 
-            myTank.setMoving(true);
+            Tank mainTank = gm.getMainTank();
+
+            mainTank.setMoving(true);
 
             if (left) {
-                myTank.setDir(Dir.LEFT);
+                mainTank.setDir(Dir.LEFT);
             }
             if (up) {
-                myTank.setDir(Dir.UP);
+                mainTank.setDir(Dir.UP);
             }
             if (right) {
-                myTank.setDir(Dir.RIGHT);
+                mainTank.setDir(Dir.RIGHT);
             }
             if (down) {
-                myTank.setDir(Dir.DOWN);
+                mainTank.setDir(Dir.DOWN);
             }
         }
     }
