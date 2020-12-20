@@ -34,11 +34,6 @@ public class Tank {
     private Group group;
 
     /**
-     * 窗口
-     */
-    private TankFrame tf;
-
-    /**
      * 移动中
      */
     private boolean moving = true;
@@ -53,12 +48,14 @@ public class Tank {
      */
     private Random random = new Random();
 
-    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
+    private GameModel gm;
+
+    public Tank(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
@@ -74,7 +71,7 @@ public class Tank {
     public void paint(Graphics g) {
 
         if (!living) {
-            tf.tankList.remove(this);
+            gm.tankList.remove(this);
         }
 
         switch (dir) {
@@ -179,7 +176,7 @@ public class Tank {
         int x = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
         int y = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
 
-        tf.bulletList.add(new Bullet(x, y, this.dir, this.group, this.tf));
+        this.gm.bulletList.add(new Bullet(x, y, this.dir, this.group, this.gm));
 
         if (this.group == Group.GOOD) {
             new Thread(() -> new Audio("audio/tank_fire.wav").play()).start();
