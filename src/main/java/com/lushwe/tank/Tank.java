@@ -50,6 +50,8 @@ public class Tank {
 
     private GameModel gm;
 
+    private FireStrategy fs;
+
     public Tank(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
@@ -61,6 +63,12 @@ public class Tank {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        if (this.group == Group.GOOD) {
+            fs = new FourDirFireStrategy();
+        } else {
+            fs = new DefaultFireStrategy();
+        }
     }
 
     /**
@@ -172,15 +180,7 @@ public class Tank {
      * 发射子弹
      */
     public void fire() {
-
-        int x = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
-        int y = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
-
-        this.gm.bulletList.add(new Bullet(x, y, this.dir, this.group, this.gm));
-
-        if (this.group == Group.GOOD) {
-            new Thread(() -> new Audio("audio/tank_fire.wav").play()).start();
-        }
+        fs.fire(this);
     }
 
     /**
@@ -231,4 +231,11 @@ public class Tank {
         this.moving = moving;
     }
 
+    public GameModel getGm() {
+        return gm;
+    }
+
+    public void setGm(GameModel gm) {
+        this.gm = gm;
+    }
 }
