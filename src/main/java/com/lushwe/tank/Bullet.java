@@ -50,6 +50,8 @@ public class Bullet {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        this.gm.bulletList.add(this);
     }
 
     /**
