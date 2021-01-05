@@ -64,10 +64,12 @@ public class Tank {
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        if (this.group == Group.GOOD) {
-            fs = new FourDirFireStrategy();
-        } else {
-            fs = new DefaultFireStrategy();
+        // 初始化开火策略
+        String fsName = PropertyMgr.getString(this.group.name().toLowerCase() + "FS");
+        try {
+            fs = (FireStrategy) Class.forName(fsName).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
