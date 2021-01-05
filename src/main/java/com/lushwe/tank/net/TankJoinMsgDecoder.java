@@ -1,7 +1,7 @@
 package com.lushwe.tank.net;
 
-import com.lushwe.tank.Dir;
-import com.lushwe.tank.Group;
+import com.lushwe.tank.enums.Dir;
+import com.lushwe.tank.enums.Group;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

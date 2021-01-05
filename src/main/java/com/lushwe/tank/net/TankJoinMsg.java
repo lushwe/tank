@@ -1,7 +1,7 @@
 package com.lushwe.tank.net;
 
-import com.lushwe.tank.Dir;
-import com.lushwe.tank.Group;
+import com.lushwe.tank.enums.Dir;
+import com.lushwe.tank.enums.Group;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

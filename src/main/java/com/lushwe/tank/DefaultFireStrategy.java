@@ -1,5 +1,7 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.enums.Group;
+
 /**
  * 说明：默认开火策略
  *

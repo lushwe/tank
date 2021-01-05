@@ -1,5 +1,8 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.enums.Dir;
+import com.lushwe.tank.enums.Group;
+
 /**
  * 说明：四个方向开火策略
  *

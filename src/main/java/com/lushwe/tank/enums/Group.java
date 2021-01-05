@@ -1,4 +1,4 @@
-package com.lushwe.tank;
+package com.lushwe.tank.enums;
 
 /**
  * 说明：阵营枚举

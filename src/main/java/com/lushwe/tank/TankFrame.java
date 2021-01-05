@@ -1,5 +1,7 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.enums.Dir;
+
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
