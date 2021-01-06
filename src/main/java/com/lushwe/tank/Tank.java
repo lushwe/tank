@@ -2,6 +2,7 @@ package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.strategy.FireStrategy;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

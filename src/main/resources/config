@@ -6,5 +6,5 @@ gameWidth=1080
 gameHeight=720
 
 # FireStrategy 配置
-goodFS=com.lushwe.tank.FourDirFireStrategy
-badFS=com.lushwe.tank.DefaultFireStrategy
+goodFS=com.lushwe.tank.strategy.FourDirFireStrategy
+badFS=com.lushwe.tank.strategy.DefaultFireStrategy
