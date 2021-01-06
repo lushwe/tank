@@ -1,4 +1,4 @@
-package com.lushwe.tank;
+package com.lushwe.tank.util;
 
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;

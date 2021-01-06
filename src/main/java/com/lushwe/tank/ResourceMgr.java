@@ -1,5 +1,7 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.util.ImageUtil;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
