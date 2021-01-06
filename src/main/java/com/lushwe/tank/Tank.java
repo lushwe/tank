@@ -3,6 +3,7 @@ package com.lushwe.tank;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.strategy.FireStrategy;
+import com.lushwe.tank.util.PropertyUtils;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -69,7 +70,7 @@ public class Tank {
         rect.height = HEIGHT;
 
         // 初始化开火策略
-        String fsName = PropertyMgr.getString(this.group.name().toLowerCase() + "FS");
+        String fsName = PropertyUtils.getString(this.group.name().toLowerCase() + "FS");
         try {
             fs = (FireStrategy) Class.forName(fsName).getDeclaredConstructor().newInstance();
         } catch (Exception e) {

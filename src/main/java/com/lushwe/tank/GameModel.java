@@ -2,6 +2,7 @@ package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.util.PropertyUtils;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -40,7 +41,7 @@ public class GameModel {
     public GameModel() {
 
         // 初始化敌方坦克
-        int initTankCount = PropertyMgr.getInt("initTankCount");
+        int initTankCount = PropertyUtils.getInt("initTankCount");
         for (int i = 0; i < initTankCount; i++) {
             this.tankList.add(new Tank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
         }

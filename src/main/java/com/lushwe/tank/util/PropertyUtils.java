@@ -1,4 +1,4 @@
-package com.lushwe.tank;
+package com.lushwe.tank.util;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -10,13 +10,13 @@ import java.util.Properties;
  * @date 2020-11-24 22:38
  * @since 0.1
  */
-public class PropertyMgr {
+public class PropertyUtils {
 
     static Properties props = new Properties();
 
     static {
         try {
-            props.load(PropertyMgr.class.getClassLoader().getResourceAsStream("config"));
+            props.load(PropertyUtils.class.getClassLoader().getResourceAsStream("config"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,6 +38,6 @@ public class PropertyMgr {
     }
 
     public static void main(String[] args) {
-        System.out.println(PropertyMgr.get("initTankCount"));
+        System.out.println(PropertyUtils.get("initTankCount"));
     }
 }
