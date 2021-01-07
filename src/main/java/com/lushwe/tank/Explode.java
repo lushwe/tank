@@ -11,8 +11,8 @@ import java.awt.Graphics;
  */
 public class Explode {
 
-    public static int WIDTH = ResourceMgr.explodes[0].getWidth();
-    public static int HEIGHT = ResourceMgr.explodes[0].getHeight();
+    public static int WIDTH = ResourceUtils.explodes[0].getWidth();
+    public static int HEIGHT = ResourceUtils.explodes[0].getHeight();
 
     private int x, y;
 
@@ -30,9 +30,9 @@ public class Explode {
 
     public void paint(Graphics g) {
 
-        g.drawImage(ResourceMgr.explodes[step++], x, y, null);
+        g.drawImage(ResourceUtils.explodes[step++], x, y, null);
 
-        if (step >= ResourceMgr.explodes.length) {
+        if (step >= ResourceUtils.explodes.length) {
             this.gm.explodes.remove(this);
         }
     }

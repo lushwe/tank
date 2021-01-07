@@ -20,8 +20,8 @@ public class Tank {
 
     private static final int SPEED = 2;
 
-    public static int WIDTH = ResourceMgr.goodTankU.getWidth();
-    public static int HEIGHT = ResourceMgr.goodTankU.getHeight();
+    public static int WIDTH = ResourceUtils.goodTankU.getWidth();
+    public static int HEIGHT = ResourceUtils.goodTankU.getHeight();
 
     Rectangle rect = new Rectangle();
 
@@ -91,16 +91,16 @@ public class Tank {
 
         switch (dir) {
             case LEFT:
-                g.drawImage(isGoodGroup() ? ResourceMgr.goodTankL : ResourceMgr.badTankL, x, y, null);
+                g.drawImage(isGoodGroup() ? ResourceUtils.goodTankL : ResourceUtils.badTankL, x, y, null);
                 break;
             case UP:
-                g.drawImage(isGoodGroup() ? ResourceMgr.goodTankU : ResourceMgr.badTankU, x, y, null);
+                g.drawImage(isGoodGroup() ? ResourceUtils.goodTankU : ResourceUtils.badTankU, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(isGoodGroup() ? ResourceMgr.goodTankR : ResourceMgr.badTankR, x, y, null);
+                g.drawImage(isGoodGroup() ? ResourceUtils.goodTankR : ResourceUtils.badTankR, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(isGoodGroup() ? ResourceMgr.goodTankD : ResourceMgr.badTankD, x, y, null);
+                g.drawImage(isGoodGroup() ? ResourceUtils.goodTankD : ResourceUtils.badTankD, x, y, null);
                 break;
         }
 

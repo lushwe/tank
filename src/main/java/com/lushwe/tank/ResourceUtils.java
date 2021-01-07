@@ -13,7 +13,7 @@ import java.io.IOException;
  * @date 2020-11-12 21:39
  * @since 0.1
  */
-public class ResourceMgr {
+public class ResourceUtils {
 
     public static BufferedImage goodTankL, goodTankU, goodTankR, goodTankD;
     public static BufferedImage badTankL, badTankU, badTankR, badTankD;
@@ -23,26 +23,26 @@ public class ResourceMgr {
     static {
         try {
             // 我方坦克
-            goodTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
+            goodTankU = ImageIO.read(ResourceUtils.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
             goodTankL = ImageUtils.rotateImage(goodTankU, -90);
             goodTankR = ImageUtils.rotateImage(goodTankU, 90);
             goodTankD = ImageUtils.rotateImage(goodTankU, 180);
 
             // 敌方坦克
-            badTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
+            badTankU = ImageIO.read(ResourceUtils.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
             badTankL = ImageUtils.rotateImage(badTankU, -90);
             badTankR = ImageUtils.rotateImage(badTankU, 90);
             badTankD = ImageUtils.rotateImage(badTankU, 180);
 
             // 子弹
-            bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
+            bulletU = ImageIO.read(ResourceUtils.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
             bulletL = ImageUtils.rotateImage(bulletU, -90);
             bulletR = ImageUtils.rotateImage(bulletU, 90);
             bulletD = ImageUtils.rotateImage(bulletU, 180);
 
             // 爆炸
             for (int i = 0; i < 16; i++) {
-                explodes[i] = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e" + (i + 1) + ".gif"));
+                explodes[i] = ImageIO.read(ResourceUtils.class.getClassLoader().getResourceAsStream("images/e" + (i + 1) + ".gif"));
             }
         } catch (IOException e) {
             e.printStackTrace();

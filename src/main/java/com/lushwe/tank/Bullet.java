@@ -17,8 +17,8 @@ public class Bullet {
 
     private static final int SPEED = 6;
 
-    public static int WIDTH = ResourceMgr.bulletD.getWidth();
-    public static int HEIGHT = ResourceMgr.bulletD.getHeight();
+    public static int WIDTH = ResourceUtils.bulletD.getWidth();
+    public static int HEIGHT = ResourceUtils.bulletD.getHeight();
 
     Rectangle rect = new Rectangle();
 
@@ -70,16 +70,16 @@ public class Bullet {
 
         switch (dir) {
             case LEFT:
-                g.drawImage(ResourceMgr.bulletL, x, y, null);
+                g.drawImage(ResourceUtils.bulletL, x, y, null);
                 break;
             case UP:
-                g.drawImage(ResourceMgr.bulletU, x, y, null);
+                g.drawImage(ResourceUtils.bulletU, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(ResourceMgr.bulletR, x, y, null);
+                g.drawImage(ResourceUtils.bulletR, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(ResourceMgr.bulletD, x, y, null);
+                g.drawImage(ResourceUtils.bulletD, x, y, null);
                 break;
         }
 
