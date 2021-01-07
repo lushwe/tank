@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * @date 2020-11-17 09:20
  * @since 0.1
  */
-public class ImageUtil {
+public class ImageUtils {
 
     /**
      * 旋转图像

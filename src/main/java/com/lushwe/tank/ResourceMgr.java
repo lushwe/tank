@@ -1,6 +1,6 @@
 package com.lushwe.tank;
 
-import com.lushwe.tank.util.ImageUtil;
+import com.lushwe.tank.util.ImageUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -24,21 +24,21 @@ public class ResourceMgr {
         try {
             // 我方坦克
             goodTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
-            goodTankL = ImageUtil.rotateImage(goodTankU, -90);
-            goodTankR = ImageUtil.rotateImage(goodTankU, 90);
-            goodTankD = ImageUtil.rotateImage(goodTankU, 180);
+            goodTankL = ImageUtils.rotateImage(goodTankU, -90);
+            goodTankR = ImageUtils.rotateImage(goodTankU, 90);
+            goodTankD = ImageUtils.rotateImage(goodTankU, 180);
 
             // 敌方坦克
             badTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
-            badTankL = ImageUtil.rotateImage(badTankU, -90);
-            badTankR = ImageUtil.rotateImage(badTankU, 90);
-            badTankD = ImageUtil.rotateImage(badTankU, 180);
+            badTankL = ImageUtils.rotateImage(badTankU, -90);
+            badTankR = ImageUtils.rotateImage(badTankU, 90);
+            badTankD = ImageUtils.rotateImage(badTankU, 180);
 
             // 子弹
             bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
-            bulletL = ImageUtil.rotateImage(bulletU, -90);
-            bulletR = ImageUtil.rotateImage(bulletU, 90);
-            bulletD = ImageUtil.rotateImage(bulletU, 180);
+            bulletL = ImageUtils.rotateImage(bulletU, -90);
+            bulletR = ImageUtils.rotateImage(bulletU, 90);
+            bulletD = ImageUtils.rotateImage(bulletU, 180);
 
             // 爆炸
             for (int i = 0; i < 16; i++) {
