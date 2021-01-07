@@ -1,6 +1,4 @@
-package com.lushwe.tank;
-
-import com.lushwe.tank.util.ImageUtils;
+package com.lushwe.tank.util;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

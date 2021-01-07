@@ -1,5 +1,7 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.util.ResourceUtils;
+
 import java.awt.Graphics;
 
 /**

@@ -4,6 +4,7 @@ import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.strategy.FireStrategy;
 import com.lushwe.tank.util.PropertyUtils;
+import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
