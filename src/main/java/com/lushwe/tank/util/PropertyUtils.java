@@ -37,7 +37,7 @@ public class PropertyUtils {
         return props.get(key);
     }
 
-    public static void main(String[] args) {
-        System.out.println(PropertyUtils.get("initTankCount"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(PropertyUtils.get("initTankCount"));
+//    }
 }
