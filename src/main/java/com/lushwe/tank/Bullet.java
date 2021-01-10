@@ -2,6 +2,7 @@ package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.factory.BaseBullet;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.Graphics;
@@ -14,7 +15,7 @@ import java.awt.Rectangle;
  * @date 2020-11-10 21:00
  * @since 0.1
  */
-public class Bullet {
+public class Bullet extends BaseBullet {
 
     private static final int SPEED = 6;
 
@@ -63,6 +64,7 @@ public class Bullet {
      *
      * @param g
      */
+    @Override
     public void paint(Graphics g) {
 
         if (!living) {
