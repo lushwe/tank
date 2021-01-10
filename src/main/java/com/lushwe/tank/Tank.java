@@ -2,12 +2,12 @@ package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.factory.BaseTank;
 import com.lushwe.tank.strategy.FireStrategy;
 import com.lushwe.tank.util.PropertyUtils;
 import com.lushwe.tank.util.ResourceUtils;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Random;
  * @date 2020-11-10 20:32
  * @since 0.1
  */
-public class Tank {
+public class Tank extends BaseTank {
 
     private static final int SPEED = 2;
 
@@ -84,6 +84,7 @@ public class Tank {
      *
      * @param g
      */
+    @Override
     public void paint(Graphics g) {
 
         if (!living) {
