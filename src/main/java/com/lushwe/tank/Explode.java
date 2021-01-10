@@ -1,8 +1,9 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.factory.BaseExplode;
 import com.lushwe.tank.util.ResourceUtils;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 /**
  * 说明：爆炸对象
@@ -11,7 +12,7 @@ import java.awt.Graphics;
  * @date 2020-11-17 09:06
  * @since 0.1
  */
-public class Explode {
+public class Explode extends BaseExplode {
 
     public static int WIDTH = ResourceUtils.explodes[0].getWidth();
     public static int HEIGHT = ResourceUtils.explodes[0].getHeight();
@@ -30,6 +31,7 @@ public class Explode {
         new Thread(() -> new Audio("audio/explode.wav").play()).start();
     }
 
+    @Override
     public void paint(Graphics g) {
 
         g.drawImage(ResourceUtils.explodes[step++], x, y, null);
