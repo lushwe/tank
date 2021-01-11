@@ -2,10 +2,13 @@ package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.factory.GameFactory;
+import com.lushwe.tank.model.Bullet;
+import com.lushwe.tank.model.Explode;
+import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.util.PropertyUtils;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,29 +24,45 @@ public class GameModel {
     /**
      * 主坦克
      */
-    private Tank mainTank = new Tank(200, 100, Dir.DOWN, Group.GOOD, this);
+    private Tank mainTank;
 
     /**
      * 敌人坦克
      */
-    List<Tank> tankList = new ArrayList<>();
+    private List<Tank> tankList = new ArrayList<>();
 
     /**
      * 子弹
      */
-    List<Bullet> bulletList = new ArrayList<>();
+    private List<Bullet> bulletList = new ArrayList<>();
 
     /**
      * 爆炸
      */
-    List<Explode> explodes = new ArrayList<>();
+    private List<Explode> explodes = new ArrayList<>();
+
+    /**
+     * 游戏工厂
+     */
+    private GameFactory gameFactory;
 
     public GameModel() {
+
+        // 初始化游戏工厂
+        String gameFactoryName = PropertyUtils.getString("gameFactory");
+        try {
+            gameFactory = (GameFactory) Class.forName(gameFactoryName).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // 初始化我方坦克
+        this.mainTank = this.gameFactory.createTank(200, 100, Dir.DOWN, Group.GOOD, this);
 
         // 初始化敌方坦克
         int initTankCount = PropertyUtils.getInt("initTankCount");
         for (int i = 0; i < initTankCount; i++) {
-            this.tankList.add(new Tank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
+            this.tankList.add(this.gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
         }
     }
 
@@ -92,5 +111,21 @@ public class GameModel {
      */
     public Tank getMainTank() {
         return mainTank;
+    }
+
+    public List<Tank> getTankList() {
+        return tankList;
+    }
+
+    public List<Bullet> getBulletList() {
+        return bulletList;
+    }
+
+    public List<Explode> getExplodes() {
+        return explodes;
+    }
+
+    public GameFactory getGameFactory() {
+        return gameFactory;
     }
 }
