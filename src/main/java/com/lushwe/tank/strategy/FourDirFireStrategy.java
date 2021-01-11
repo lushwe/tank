@@ -1,10 +1,10 @@
 package com.lushwe.tank.strategy;
 
 import com.lushwe.tank.Audio;
-import com.lushwe.tank.Bullet;
-import com.lushwe.tank.Tank;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
+import com.lushwe.tank.model.Bullet;
+import com.lushwe.tank.model.Tank;
 
 /**
  * 说明：四个方向开火策略
@@ -23,7 +23,7 @@ public class FourDirFireStrategy implements FireStrategy {
 
 
         for (Dir dir : Dir.values()) {
-            new Bullet(x, y, dir, tank.getGroup(), tank.getGm());
+            tank.getGm().getGameFactory().createBullet(x, y, dir, tank.getGroup(), tank.getGm());
         }
 
         if (tank.getGroup() == Group.GOOD) {

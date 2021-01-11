@@ -1,6 +1,6 @@
 package com.lushwe.tank.strategy;
 
-import com.lushwe.tank.Tank;
+import com.lushwe.tank.model.Tank;
 
 /**
  * 说明：开火策略
