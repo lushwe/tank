@@ -1,8 +1,10 @@
-package com.lushwe.tank;
+package com.lushwe.tank.factory.def;
 
+import com.lushwe.tank.GameModel;
+import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
-import com.lushwe.tank.factory.BaseTank;
+import com.lushwe.tank.factory.Tank;
 import com.lushwe.tank.strategy.FireStrategy;
 import com.lushwe.tank.util.PropertyUtils;
 import com.lushwe.tank.util.ResourceUtils;
@@ -17,14 +19,11 @@ import java.util.Random;
  * @date 2020-11-10 20:32
  * @since 0.1
  */
-public class Tank extends BaseTank {
+public class DefaultTank implements Tank {
 
     private static final int SPEED = 2;
 
-    public static int WIDTH = ResourceUtils.goodTankU.getWidth();
-    public static int HEIGHT = ResourceUtils.goodTankU.getHeight();
-
-    Rectangle rect = new Rectangle();
+    private Rectangle rect = new Rectangle();
 
     private int x;
     private int y;
@@ -58,7 +57,7 @@ public class Tank extends BaseTank {
 
     private FireStrategy fs;
 
-    public Tank(int x, int y, Dir dir, Group group, GameModel gm) {
+    public DefaultTank(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
@@ -88,7 +87,7 @@ public class Tank extends BaseTank {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.tankList.remove(this);
+            gm.getTankList().remove(this);
         }
 
         switch (dir) {
@@ -170,11 +169,11 @@ public class Tank extends BaseTank {
         if (this.y < 28) {
             y = 28;
         }
-        if (this.x > TankFrame.GAME_WIDTH - Tank.WIDTH - 2) {
-            x = TankFrame.GAME_WIDTH - Tank.WIDTH - 2;
+        if (this.x > TankFrame.GAME_WIDTH - DefaultTank.WIDTH - 2) {
+            x = TankFrame.GAME_WIDTH - DefaultTank.WIDTH - 2;
         }
-        if (this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2) {
-            y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2;
+        if (this.y > TankFrame.GAME_HEIGHT - DefaultTank.HEIGHT - 2) {
+            y = TankFrame.GAME_HEIGHT - DefaultTank.HEIGHT - 2;
         }
     }
 
@@ -246,5 +245,14 @@ public class Tank extends BaseTank {
 
     public void setGm(GameModel gm) {
         this.gm = gm;
+    }
+
+    @Override
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
     }
 }

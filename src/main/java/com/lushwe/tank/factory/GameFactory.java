@@ -11,7 +11,7 @@ import com.lushwe.tank.enums.Group;
  * @date 2021-1-10 20:27
  * @since 0.1
  */
-public abstract class BaseGameFactory {
+public interface BaseGameFactory {
 
     /**
      * 创建坦克
@@ -23,7 +23,7 @@ public abstract class BaseGameFactory {
      * @param gm
      * @return
      */
-    public abstract BaseTank createTank(int x, int y, Dir dir, Group group, GameModel gm);
+    BaseTank createTank(int x, int y, Dir dir, Group group, GameModel gm);
 
     /**
      * 创建子弹
@@ -35,7 +35,7 @@ public abstract class BaseGameFactory {
      * @param gm
      * @return
      */
-    public abstract BaseBullet createBullet(int x, int y, Dir dir, Group group, GameModel gm);
+    BaseBullet createBullet(int x, int y, Dir dir, Group group, GameModel gm);
 
     /**
      * 创建爆炸
@@ -45,5 +45,5 @@ public abstract class BaseGameFactory {
      * @param gm
      * @return
      */
-    public abstract BaseExplode createExplode(int x, int y, GameModel gm);
+    BaseExplode createExplode(int x, int y, GameModel gm);
 }

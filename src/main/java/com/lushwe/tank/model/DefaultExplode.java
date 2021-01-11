@@ -1,6 +1,8 @@
-package com.lushwe.tank;
+package com.lushwe.tank.factory.def;
 
-import com.lushwe.tank.factory.BaseExplode;
+import com.lushwe.tank.Audio;
+import com.lushwe.tank.GameModel;
+import com.lushwe.tank.factory.Explode;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
@@ -12,10 +14,7 @@ import java.awt.*;
  * @date 2020-11-17 09:06
  * @since 0.1
  */
-public class Explode extends BaseExplode {
-
-    public static int WIDTH = ResourceUtils.explodes[0].getWidth();
-    public static int HEIGHT = ResourceUtils.explodes[0].getHeight();
+public class DefaultExplode implements Explode {
 
     private int x, y;
 
@@ -23,7 +22,7 @@ public class Explode extends BaseExplode {
 
     private int step = 0;
 
-    public Explode(int x, int y, GameModel gm) {
+    public DefaultExplode(int x, int y, GameModel gm) {
         this.x = x;
         this.y = y;
         this.gm = gm;
@@ -37,7 +36,7 @@ public class Explode extends BaseExplode {
         g.drawImage(ResourceUtils.explodes[step++], x, y, null);
 
         if (step >= ResourceUtils.explodes.length) {
-            this.gm.explodes.remove(this);
+            this.gm.getExplodes().remove(this);
         }
     }
 }

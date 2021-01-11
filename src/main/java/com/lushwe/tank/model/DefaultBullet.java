@@ -1,12 +1,14 @@
-package com.lushwe.tank;
+package com.lushwe.tank.factory.def;
 
+import com.lushwe.tank.GameModel;
+import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
-import com.lushwe.tank.factory.BaseBullet;
+import com.lushwe.tank.factory.Bullet;
+import com.lushwe.tank.factory.Tank;
 import com.lushwe.tank.util.ResourceUtils;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 
 /**
  * 说明：子弹对象
@@ -15,12 +17,9 @@ import java.awt.Rectangle;
  * @date 2020-11-10 21:00
  * @since 0.1
  */
-public class Bullet extends BaseBullet {
+public class DefaultBullet implements Bullet {
 
     private static final int SPEED = 6;
-
-    public static int WIDTH = ResourceUtils.bulletD.getWidth();
-    public static int HEIGHT = ResourceUtils.bulletD.getHeight();
 
     Rectangle rect = new Rectangle();
 
@@ -44,7 +43,7 @@ public class Bullet extends BaseBullet {
      */
     private boolean living = true;
 
-    public Bullet(int x, int y, Dir dir, Group group, GameModel gm) {
+    public DefaultBullet(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
@@ -56,7 +55,7 @@ public class Bullet extends BaseBullet {
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        this.gm.bulletList.add(this);
+        this.gm.getBulletList().add(this);
     }
 
     /**
@@ -68,7 +67,7 @@ public class Bullet extends BaseBullet {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.bulletList.remove(this);
+            gm.getBulletList().remove(this);
         }
 
         switch (dir) {
@@ -126,21 +125,22 @@ public class Bullet extends BaseBullet {
      *
      * @param tank
      */
+    @Override
     public void collideWith(Tank tank) {
 
         if (this.group == tank.getGroup()) {
             return;
         }
 
-        if (this.rect.intersects(tank.rect)) {
+        if (this.rect.intersects(tank.getRect())) {
             // 子弹死亡
             this.die();
             // 坦克死亡
             tank.die();
             // 添加爆炸
-            int x = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
-            int y = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            this.gm.explodes.add(new Explode(x, y, this.gm));
+            int x = tank.getX() + DefaultTank.WIDTH / 2 - DefaultExplode.WIDTH / 2;
+            int y = tank.getY() + DefaultTank.HEIGHT / 2 - DefaultExplode.HEIGHT / 2;
+            this.gm.getExplodes().add(this.gm.gameFactory.createExplode(x, y, this.gm));
         }
 
     }

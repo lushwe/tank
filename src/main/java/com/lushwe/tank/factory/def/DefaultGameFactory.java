@@ -14,7 +14,7 @@ import com.lushwe.tank.enums.Group;
  * @date 2021/1/10 下午8:43
  * @since 0.1
  */
-public class DefaultGameFactory extends BaseGameFactory {
+public class DefaultGameFactory implements BaseGameFactory {
 
     @Override
     public BaseTank createTank(int x, int y, Dir dir, Group group, GameModel gm) {

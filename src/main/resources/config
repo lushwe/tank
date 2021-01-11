@@ -5,6 +5,10 @@ bulletSpeed=10
 gameWidth=1080
 gameHeight=720
 
+# GameFactory 配置
+gameFactory=com.lushwe.tank.factory.def.DefaultGameFactory
+#gameFactory=com.lushwe.tank.factory.rect.RectGameFactory
+
 # FireStrategy 配置
 goodFS=com.lushwe.tank.strategy.FourDirFireStrategy
 badFS=com.lushwe.tank.strategy.DefaultFireStrategy
