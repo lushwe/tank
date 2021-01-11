@@ -1,4 +1,4 @@
-package com.lushwe.tank.factory;
+package com.lushwe.tank.model;
 
 import com.lushwe.tank.GameModel;
 import com.lushwe.tank.enums.Dir;
