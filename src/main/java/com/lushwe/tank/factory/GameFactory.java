@@ -1,6 +1,9 @@
 package com.lushwe.tank.factory;
 
+import com.lushwe.tank.model.Bullet;
+import com.lushwe.tank.model.Explode;
 import com.lushwe.tank.GameModel;
+import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 
@@ -11,7 +14,7 @@ import com.lushwe.tank.enums.Group;
  * @date 2021-1-10 20:27
  * @since 0.1
  */
-public interface BaseGameFactory {
+public interface GameFactory {
 
     /**
      * 创建坦克
@@ -23,7 +26,7 @@ public interface BaseGameFactory {
      * @param gm
      * @return
      */
-    BaseTank createTank(int x, int y, Dir dir, Group group, GameModel gm);
+    Tank createTank(int x, int y, Dir dir, Group group, GameModel gm);
 
     /**
      * 创建子弹
@@ -35,7 +38,7 @@ public interface BaseGameFactory {
      * @param gm
      * @return
      */
-    BaseBullet createBullet(int x, int y, Dir dir, Group group, GameModel gm);
+    Bullet createBullet(int x, int y, Dir dir, Group group, GameModel gm);
 
     /**
      * 创建爆炸
@@ -45,5 +48,5 @@ public interface BaseGameFactory {
      * @param gm
      * @return
      */
-    BaseExplode createExplode(int x, int y, GameModel gm);
+    Explode createExplode(int x, int y, GameModel gm);
 }
