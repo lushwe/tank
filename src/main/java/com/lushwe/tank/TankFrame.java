@@ -1,11 +1,9 @@
 package com.lushwe.tank;
 
 import com.lushwe.tank.enums.Dir;
+import com.lushwe.tank.model.Tank;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -20,8 +18,8 @@ import java.awt.event.WindowEvent;
  */
 public class TankFrame extends Frame {
 
-    static final int GAME_WIDTH = 1080;
-    static final int GAME_HEIGHT = 960;
+    public static final int GAME_WIDTH = 1080;
+    public static final int GAME_HEIGHT = 960;
 
     /**
      * 游戏模型
