@@ -14,9 +14,7 @@ import java.awt.*;
  * @date 2020-11-17 09:06
  * @since 0.1
  */
-public class DefaultExplode implements Explode {
-
-    private int x, y;
+public class DefaultExplode extends Explode {
 
     private GameModel gm;
 

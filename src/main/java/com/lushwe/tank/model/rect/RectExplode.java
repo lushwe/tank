@@ -13,9 +13,7 @@ import java.awt.*;
  * @date 2021/1/10 下午9:51
  * @since 0.1
  */
-public class RectExplode implements Explode {
-
-    private int x, y;
+public class RectExplode extends Explode {
 
     private GameModel gm;
 

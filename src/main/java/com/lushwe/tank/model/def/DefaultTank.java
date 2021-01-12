@@ -19,14 +19,11 @@ import java.util.Random;
  * @date 2020-11-10 20:32
  * @since 0.1
  */
-public class DefaultTank implements Tank {
+public class DefaultTank extends Tank {
 
     private static final int SPEED = 2;
 
     private Rectangle rect = new Rectangle();
-
-    private int x;
-    private int y;
 
     /**
      * 方向

@@ -17,14 +17,11 @@ import java.awt.*;
  * @date 2020-11-10 21:00
  * @since 0.1
  */
-public class DefaultBullet implements Bullet {
+public class DefaultBullet extends Bullet {
 
     private static final int SPEED = 6;
 
     Rectangle rect = new Rectangle();
-
-    private int x;
-    private int y;
 
     /**
      * 方向

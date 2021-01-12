@@ -18,14 +18,11 @@ import java.awt.*;
  * @date 2021/1/10 下午9:51
  * @since 0.1
  */
-public class RectBullet implements Bullet {
+public class RectBullet extends Bullet {
 
     private static final int SPEED = 6;
 
     Rectangle rect = new Rectangle();
-
-    private int x;
-    private int y;
 
     /**
      * 方向

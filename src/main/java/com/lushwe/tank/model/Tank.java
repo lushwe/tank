@@ -1,6 +1,7 @@
 package com.lushwe.tank.model;
 
 import com.lushwe.tank.GameModel;
+import com.lushwe.tank.GameObject;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.util.ResourceUtils;
@@ -14,35 +15,29 @@ import java.awt.*;
  * @date 2021/1/10 下午8:40
  * @since 0.1
  */
-public interface Tank {
+public abstract class Tank extends GameObject {
 
-    int WIDTH = ResourceUtils.goodTankU.getWidth();
-    int HEIGHT = ResourceUtils.goodTankU.getHeight();
+    public static int WIDTH = ResourceUtils.goodTankU.getWidth();
+    public static int HEIGHT = ResourceUtils.goodTankU.getHeight();
 
-    int getX();
+    public abstract int getX();
 
-    int getY();
+    public abstract int getY();
 
-    Dir getDir();
+    public abstract Dir getDir();
 
-    void setDir(Dir dir);
+    public abstract void setDir(Dir dir);
 
-    void setMoving(boolean moving);
+    public abstract void setMoving(boolean moving);
 
-    Group getGroup();
+    public abstract Group getGroup();
 
-    GameModel getGm();
+    public abstract GameModel getGm();
 
-    void die();
+    public abstract void die();
 
-    void fire();
+    public abstract void fire();
 
-    Rectangle getRect();
+    public abstract Rectangle getRect();
 
-    /**
-     * 画自己
-     *
-     * @param g
-     */
-    void paint(Graphics g);
 }

@@ -19,14 +19,11 @@ import java.util.Random;
  * @date 2021/1/10 下午9:50
  * @since 0.1
  */
-public class RectTank implements Tank {
+public class RectTank extends Tank {
 
     private static final int SPEED = 2;
 
     private Rectangle rect = new Rectangle();
-
-    private int x;
-    private int y;
 
     /**
      * 方向

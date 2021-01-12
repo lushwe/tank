@@ -1,8 +1,7 @@
 package com.lushwe.tank.model;
 
+import com.lushwe.tank.GameObject;
 import com.lushwe.tank.util.ResourceUtils;
-
-import java.awt.*;
 
 /**
  * 说明：基础子弹对象
@@ -11,22 +10,15 @@ import java.awt.*;
  * @date 2021/1/10 下午8:40
  * @since 0.1
  */
-public interface Bullet {
+public abstract class Bullet extends GameObject {
 
-    int WIDTH = ResourceUtils.bulletD.getWidth();
-    int HEIGHT = ResourceUtils.bulletD.getHeight();
-
-    /**
-     * 画自己
-     *
-     * @param g
-     */
-    void paint(Graphics g);
+    public static int WIDTH = ResourceUtils.bulletD.getWidth();
+    public static int HEIGHT = ResourceUtils.bulletD.getHeight();
 
     /**
      * 碰撞
      *
      * @param tank
      */
-    void collideWith(Tank tank);
+    public abstract void collideWith(Tank tank);
 }
