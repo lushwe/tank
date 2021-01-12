@@ -1,14 +1,14 @@
-package com.lushwe.tank.factory.def;
+package com.lushwe.tank.model.def;
 
 import com.lushwe.tank.Audio;
 import com.lushwe.tank.GameModel;
-import com.lushwe.tank.factory.Explode;
+import com.lushwe.tank.model.Explode;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
 
 /**
- * 说明：爆炸对象
+ * 说明：默认爆炸对象
  *
  * @author Jack Liu
  * @date 2020-11-17 09:06

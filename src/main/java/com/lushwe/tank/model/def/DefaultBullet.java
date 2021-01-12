@@ -1,17 +1,17 @@
-package com.lushwe.tank.factory.def;
+package com.lushwe.tank.model.def;
 
 import com.lushwe.tank.GameModel;
 import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
-import com.lushwe.tank.factory.Bullet;
-import com.lushwe.tank.factory.Tank;
+import com.lushwe.tank.model.Bullet;
+import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
 
 /**
- * 说明：子弹对象
+ * 说明：默认子弹对象
  *
  * @author Jack Liu
  * @date 2020-11-10 21:00
@@ -36,6 +36,9 @@ public class DefaultBullet implements Bullet {
      */
     private Group group;
 
+    /**
+     * 游戏模型对象
+     */
     private GameModel gm;
 
     /**
@@ -140,7 +143,7 @@ public class DefaultBullet implements Bullet {
             // 添加爆炸
             int x = tank.getX() + DefaultTank.WIDTH / 2 - DefaultExplode.WIDTH / 2;
             int y = tank.getY() + DefaultTank.HEIGHT / 2 - DefaultExplode.HEIGHT / 2;
-            this.gm.getExplodes().add(this.gm.gameFactory.createExplode(x, y, this.gm));
+            this.gm.getExplodes().add(this.gm.getGameFactory().createExplode(x, y, this.gm));
         }
 
     }

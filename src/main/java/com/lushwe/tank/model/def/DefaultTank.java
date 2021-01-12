@@ -1,10 +1,10 @@
-package com.lushwe.tank.factory.def;
+package com.lushwe.tank.model.def;
 
 import com.lushwe.tank.GameModel;
 import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
-import com.lushwe.tank.factory.Tank;
+import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.strategy.FireStrategy;
 import com.lushwe.tank.util.PropertyUtils;
 import com.lushwe.tank.util.ResourceUtils;
@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- * 说明：坦克对象
+ * 说明：默认坦克对象
  *
  * @author Jack Liu
  * @date 2020-11-10 20:32
