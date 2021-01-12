@@ -27,6 +27,11 @@ public class GameModel {
     private Tank mainTank;
 
     /**
+     * 游戏对象列表
+     */
+    private List<GameObject> gameObjects = new ArrayList<>();
+
+    /**
      * 敌人坦克
      */
     private List<Tank> tankList = new ArrayList<>();
@@ -64,6 +69,14 @@ public class GameModel {
         for (int i = 0; i < initTankCount; i++) {
             this.tankList.add(this.gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
         }
+    }
+
+    public void add(GameObject go) {
+        this.gameObjects.add(go);
+    }
+
+    public void remove(GameObject go) {
+        this.gameObjects.remove(go);
     }
 
     public void paint(Graphics g) {
