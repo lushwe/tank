@@ -6,8 +6,8 @@ gameWidth=1080
 gameHeight=720
 
 # GameFactory 配置
-gameFactory=com.lushwe.tank.factory.def.DefaultGameFactory
-#gameFactory=com.lushwe.tank.factory.rect.RectGameFactory
+gameFactory=com.lushwe.tank.factory.DefaultGameFactory
+#gameFactory=com.lushwe.tank.factory.RectGameFactory
 
 # FireStrategy 配置
 goodFS=com.lushwe.tank.strategy.FourDirFireStrategy
