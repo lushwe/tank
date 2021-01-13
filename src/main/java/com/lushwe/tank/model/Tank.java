@@ -28,6 +28,8 @@ public abstract class Tank extends GameObject {
 
     public abstract void setDir(Dir dir);
 
+    public abstract Dir getReverseDir();
+
     public abstract void setMoving(boolean moving);
 
     public abstract Group getGroup();
