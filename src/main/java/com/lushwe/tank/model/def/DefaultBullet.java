@@ -5,7 +5,6 @@ import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Bullet;
-import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
@@ -55,7 +54,7 @@ public class DefaultBullet extends Bullet {
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        this.gm.getBulletList().add(this);
+        this.gm.add(this);
     }
 
     /**
@@ -67,7 +66,7 @@ public class DefaultBullet extends Bullet {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.getBulletList().remove(this);
+            gm.remove(this);
         }
 
         switch (dir) {
@@ -121,34 +120,31 @@ public class DefaultBullet extends Bullet {
     }
 
     /**
-     * 碰撞
-     *
-     * @param tank
-     */
-    @Override
-    public void collideWith(Tank tank) {
-
-        if (this.group == tank.getGroup()) {
-            return;
-        }
-
-        if (this.rect.intersects(tank.getRect())) {
-            // 子弹死亡
-            this.die();
-            // 坦克死亡
-            tank.die();
-            // 添加爆炸
-            int x = tank.getX() + DefaultTank.WIDTH / 2 - DefaultExplode.WIDTH / 2;
-            int y = tank.getY() + DefaultTank.HEIGHT / 2 - DefaultExplode.HEIGHT / 2;
-            this.gm.getExplodes().add(this.gm.getGameFactory().createExplode(x, y, this.gm));
-        }
-
-    }
-
-    /**
      * 死亡
      */
-    private void die() {
+    public void die() {
         this.living = false;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public Dir getDir() {
+        return dir;
+    }
+
+    @Override
+    public Group getGroup() {
+        return group;
+    }
+
+    @Override
+    public GameModel getGm() {
+        return gm;
+    }
+
+    public boolean isLiving() {
+        return living;
     }
 }
