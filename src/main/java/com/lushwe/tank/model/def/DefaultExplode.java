@@ -34,7 +34,7 @@ public class DefaultExplode extends Explode {
         g.drawImage(ResourceUtils.explodes[step++], x, y, null);
 
         if (step >= ResourceUtils.explodes.length) {
-            this.gm.getExplodes().remove(this);
+            this.gm.remove(this);
         }
     }
 }
