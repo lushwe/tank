@@ -1,7 +1,11 @@
 package com.lushwe.tank.model;
 
+import com.lushwe.tank.GameModel;
 import com.lushwe.tank.GameObject;
+import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.util.ResourceUtils;
+
+import java.awt.*;
 
 /**
  * 说明：基础子弹对象
@@ -15,10 +19,11 @@ public abstract class Bullet extends GameObject {
     public static int WIDTH = ResourceUtils.bulletD.getWidth();
     public static int HEIGHT = ResourceUtils.bulletD.getHeight();
 
-    /**
-     * 碰撞
-     *
-     * @param tank
-     */
-    public abstract void collideWith(Tank tank);
+    public abstract Group getGroup();
+
+    public abstract GameModel getGm();
+
+    public abstract Rectangle getRect();
+
+    public abstract void die();
 }
