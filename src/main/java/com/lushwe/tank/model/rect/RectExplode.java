@@ -38,7 +38,7 @@ public class RectExplode extends Explode {
         g.setColor(color);
 
         if (step >= 16) {
-            this.gm.getExplodes().remove(this);
+            this.gm.remove(this);
         }
     }
 }
