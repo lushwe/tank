@@ -84,7 +84,7 @@ public class RectTank extends Tank {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.getTankList().remove(this);
+            gm.remove(this);
         }
 
         //
@@ -209,6 +209,22 @@ public class RectTank extends Tank {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    @Override
+    public Dir getReverseDir() {
+        switch (dir) {
+            case UP:
+                return Dir.DOWN;
+            case DOWN:
+                return Dir.UP;
+            case LEFT:
+                return Dir.RIGHT;
+            case RIGHT:
+                return Dir.LEFT;
+            default:
+                throw new RuntimeException("方向属性异常");
+        }
     }
 
     public Group getGroup() {
