@@ -1,4 +1,6 @@
-package com.lushwe.tank;
+package com.lushwe.tank.collider;
+
+import com.lushwe.tank.GameObject;
 
 /**
  * 说明：碰撞接口
@@ -15,5 +17,5 @@ public interface Collider {
      * @param go1
      * @param go2
      */
-    void collide(GameObject go1, GameObject go2);
+    boolean collide(GameObject go1, GameObject go2);
 }
