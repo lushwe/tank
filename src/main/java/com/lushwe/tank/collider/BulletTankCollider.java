@@ -1,5 +1,6 @@
-package com.lushwe.tank;
+package com.lushwe.tank.collider;
 
+import com.lushwe.tank.GameObject;
 import com.lushwe.tank.model.Bullet;
 import com.lushwe.tank.model.Tank;
 import com.lushwe.tank.model.def.DefaultExplode;
@@ -15,18 +16,18 @@ import com.lushwe.tank.model.def.DefaultTank;
 public class BulletTankCollider implements Collider {
 
     @Override
-    public void collide(GameObject go1, GameObject go2) {
+    public boolean collide(GameObject go1, GameObject go2) {
         if (go1 instanceof Bullet && go2 instanceof Tank) {
-            collideWith((Bullet) go1, (Tank) go2);
+            return collideWith((Bullet) go1, (Tank) go2);
         } else if (go1 instanceof Tank && go2 instanceof Bullet) {
-            collide(go2, go1);
+            return collide(go2, go1);
         }
-//        System.out.println("不符合处理类型，忽略");
+        return false;
     }
 
-    private void collideWith(Bullet bullet, Tank tank) {
+    private boolean collideWith(Bullet bullet, Tank tank) {
         if (bullet.getGroup() == tank.getGroup()) {
-            return;
+            return false;
         }
         if (bullet.getRect().intersects(tank.getRect())) {
             // 子弹死亡
@@ -37,6 +38,8 @@ public class BulletTankCollider implements Collider {
             int x = tank.getX() + DefaultTank.WIDTH / 2 - DefaultExplode.WIDTH / 2;
             int y = tank.getY() + DefaultTank.HEIGHT / 2 - DefaultExplode.HEIGHT / 2;
             bullet.getGm().add(bullet.getGm().getGameFactory().createExplode(x, y, bullet.getGm()));
+            return true;
         }
+        return false;
     }
 }
