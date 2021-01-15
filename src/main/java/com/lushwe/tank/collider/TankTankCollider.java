@@ -1,5 +1,6 @@
-package com.lushwe.tank;
+package com.lushwe.tank.collider;
 
+import com.lushwe.tank.GameObject;
 import com.lushwe.tank.model.Tank;
 
 /**
@@ -12,18 +13,19 @@ import com.lushwe.tank.model.Tank;
 public class TankTankCollider implements Collider {
 
     @Override
-    public void collide(GameObject go1, GameObject go2) {
+    public boolean collide(GameObject go1, GameObject go2) {
         if (go1 instanceof Tank && go2 instanceof Tank) {
-            collideWith((Tank) go1, (Tank) go2);
+            return collideWith((Tank) go1, (Tank) go2);
         }
+        return false;
     }
 
-    private void collideWith(Tank tank1, Tank tank2) {
+    private boolean collideWith(Tank tank1, Tank tank2) {
         if (tank1.getRect().intersects(tank2.getRect())) {
-            // 反向移动
-            tank1.setDir(tank1.getReverseDir());
-            // 反向移动
-            tank2.setDir(tank2.getReverseDir());
+            // 返回上一个位置
+            tank1.back();
+            tank2.back();
         }
+        return false;
     }
 }
