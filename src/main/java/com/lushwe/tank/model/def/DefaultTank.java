@@ -1,7 +1,6 @@
 package com.lushwe.tank.model.def;
 
 import com.lushwe.tank.GameModel;
-import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Tank;
@@ -121,6 +120,9 @@ public class DefaultTank extends Tank {
      */
     private void move() {
 
+        oldX = x;
+        oldY = y;
+
         if (!moving) {
             return;
         }
@@ -157,24 +159,6 @@ public class DefaultTank extends Tank {
     }
 
     /**
-     * 边界检查
-     */
-    private void boundsCheck() {
-        if (this.x < 2) {
-            x = 2;
-        }
-        if (this.y < 28) {
-            y = 28;
-        }
-        if (this.x > TankFrame.GAME_WIDTH - DefaultTank.WIDTH - 2) {
-            x = TankFrame.GAME_WIDTH - DefaultTank.WIDTH - 2;
-        }
-        if (this.y > TankFrame.GAME_HEIGHT - DefaultTank.HEIGHT - 2) {
-            y = TankFrame.GAME_HEIGHT - DefaultTank.HEIGHT - 2;
-        }
-    }
-
-    /**
      * 随机移动
      */
     private void randomDir() {
@@ -195,21 +179,12 @@ public class DefaultTank extends Tank {
         this.living = false;
     }
 
-    // =========================== getter/setter method ===========================
     public int getX() {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public Dir getDir() {
@@ -220,32 +195,8 @@ public class DefaultTank extends Tank {
         this.dir = dir;
     }
 
-    @Override
-    public Dir getReverseDir() {
-        switch (dir) {
-            case UP:
-                return Dir.DOWN;
-            case DOWN:
-                return Dir.UP;
-            case LEFT:
-                return Dir.RIGHT;
-            case RIGHT:
-                return Dir.LEFT;
-            default:
-                throw new RuntimeException("方向属性异常");
-        }
-    }
-
     public Group getGroup() {
         return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public boolean isMoving() {
-        return moving;
     }
 
     public void setMoving(boolean moving) {
@@ -256,16 +207,8 @@ public class DefaultTank extends Tank {
         return gm;
     }
 
-    public void setGm(GameModel gm) {
-        this.gm = gm;
-    }
-
     @Override
     public Rectangle getRect() {
         return rect;
-    }
-
-    public void setRect(Rectangle rect) {
-        this.rect = rect;
     }
 }
