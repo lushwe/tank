@@ -1,5 +1,6 @@
 package com.lushwe.tank;
 
+import com.lushwe.tank.collider.ColliderChain;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.factory.GameFactory;
@@ -34,13 +35,12 @@ public class GameModel {
      */
     private GameFactory gameFactory;
 
-    private List<Collider> colliders = new ArrayList<>();
+    /**
+     * 碰撞器链
+     */
+    private ColliderChain colliderChain = new ColliderChain();
 
     public GameModel() {
-
-        //
-//        colliders.add(new BulletTankCollider());
-//        colliders.add(new TankTankCollider());
 
         // 初始化游戏工厂
         String gameFactoryName = PropertyUtils.getString("gameFactory");
@@ -80,15 +80,15 @@ public class GameModel {
 
     public void paint(Graphics g) {
 
-        System.out.println("paint");
+//        System.out.println("paint");
 
         // 画出子弹数量
-        Color color = g.getColor();
-        g.setColor(Color.WHITE);
+//        Color color = g.getColor();
+//        g.setColor(Color.WHITE);
 //        g.drawString("子弹数量：" + bulletList.size(), 10, 50);
 //        g.drawString("敌人数量：" + tankList.size(), 10, 70);
 //        g.drawString("爆炸数量：" + explodes.size(), 10, 90);
-        g.setColor(color);
+//        g.setColor(color);
 
         // 画主坦克
         mainTank.paint(g);
@@ -101,9 +101,7 @@ public class GameModel {
         // 碰撞检测
         for (int i = 0; i < gameObjects.size(); i++) {
             for (int j = i + 1; j < gameObjects.size(); j++) {
-                for (Collider collider : colliders) {
-                    collider.collide(gameObjects.get(i), gameObjects.get(j));
-                }
+                colliderChain.collide(gameObjects.get(i), gameObjects.get(j));
             }
         }
     }
