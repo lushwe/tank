@@ -1,5 +1,5 @@
 #tanks count at initialization
-initTankCount=5
+initTankCount=10
 tankSpeed=5
 bulletSpeed=10
 gameWidth=1080
@@ -12,3 +12,6 @@ gameFactory=com.lushwe.tank.factory.DefaultGameFactory
 # FireStrategy 配置
 goodFS=com.lushwe.tank.strategy.FourDirFireStrategy
 badFS=com.lushwe.tank.strategy.DefaultFireStrategy
+
+# Collider 配置
+colliders=com.lushwe.tank.collider.TankTankCollider,com.lushwe.tank.collider.BulletTankCollider
