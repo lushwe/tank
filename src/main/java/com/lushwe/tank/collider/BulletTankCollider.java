@@ -7,7 +7,7 @@ import com.lushwe.tank.model.def.DefaultExplode;
 import com.lushwe.tank.model.def.DefaultTank;
 
 /**
- * 说明：子弹坦克碰撞
+ * 说明：子弹-坦克碰撞
  *
  * @author Jack Liu
  * @date 2021/1/12 下午11:12
