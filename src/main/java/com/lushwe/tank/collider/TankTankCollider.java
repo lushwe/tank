@@ -4,7 +4,7 @@ import com.lushwe.tank.GameObject;
 import com.lushwe.tank.model.Tank;
 
 /**
- * 说明：子弹坦克碰撞
+ * 说明：坦克-坦克碰撞
  *
  * @author Jack Liu
  * @date 2021/1/12 下午11:12
