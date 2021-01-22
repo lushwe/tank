@@ -14,4 +14,4 @@ goodFS=com.lushwe.tank.strategy.FourDirFireStrategy
 badFS=com.lushwe.tank.strategy.DefaultFireStrategy
 
 # Collider 配置
-colliders=com.lushwe.tank.collider.TankTankCollider,com.lushwe.tank.collider.BulletTankCollider
+colliders=com.lushwe.tank.collider.TankTankCollider,com.lushwe.tank.collider.BulletTankCollider,com.lushwe.tank.collider.BulletWallCollider,com.lushwe.tank.collider.TankWallCollider
