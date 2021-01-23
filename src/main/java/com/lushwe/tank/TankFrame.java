@@ -21,11 +21,6 @@ public class TankFrame extends Frame {
     public static final int GAME_WIDTH = 1080;
     public static final int GAME_HEIGHT = 960;
 
-    /**
-     * 游戏模型
-     */
-    GameModel gm = new GameModel();
-
     public TankFrame() {
         this.setSize(GAME_WIDTH, GAME_HEIGHT);
         this.setResizable(false);
@@ -60,7 +55,7 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics g) {
 
-        gm.paint(g);
+        GameModel.getInstance().paint(g);
 
     }
 
@@ -114,7 +109,7 @@ public class TankFrame extends Frame {
                     down = false;
                     break;
                 case KeyEvent.VK_CONTROL:
-                    gm.getMainTank().fire();
+                    GameModel.getInstance().getMainTank().fire();
                     break;
                 default:
                     break;
@@ -128,7 +123,7 @@ public class TankFrame extends Frame {
          */
         private void setMainTankDir() {
 
-            Tank mainTank = gm.getMainTank();
+            Tank mainTank = GameModel.getInstance().getMainTank();
 
             mainTank.setMoving(true);
 
