@@ -23,6 +23,11 @@ import java.util.List;
 public class GameModel {
 
     /**
+     * 游戏模型实例
+     */
+    private static GameModel INSTANCE = new GameModel();
+
+    /**
      * 主坦克
      */
     private Tank mainTank;
@@ -42,30 +47,17 @@ public class GameModel {
      */
     private ColliderChain colliderChain = new ColliderChain();
 
-    public GameModel() {
+    static {
+        INSTANCE.init();
+    }
 
-        // 初始化游戏工厂
-        String gameFactoryName = PropertyUtils.getString("gameFactory");
-        try {
-            gameFactory = (GameFactory) Class.forName(gameFactoryName).getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private GameModel() {
+        // 私有化构造方法
+    }
 
-        // 初始化我方坦克
-        this.mainTank = this.gameFactory.createTank(200, 100, Dir.DOWN, Group.GOOD, this);
 
-        // 初始化敌方坦克
-        int initTankCount = PropertyUtils.getInt("initTankCount");
-        for (int i = 0; i < initTankCount; i++) {
-            this.gameObjects.add(this.gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
-        }
-
-        // 初始化墙
-        add(new DefaultWall(150, 150, 200, 50));
-        add(new DefaultWall(600, 150, 200, 50));
-        add(new RectWall(300, 500, 50, 200));
-        add(new RectWall(600, 500, 50, 200));
+    public static GameModel getInstance() {
+        return INSTANCE;
     }
 
     /**
@@ -87,8 +79,6 @@ public class GameModel {
     }
 
     public void paint(Graphics g) {
-
-//        System.out.println("paint");
 
         // 画出子弹数量
 //        Color color = g.getColor();
@@ -112,6 +102,34 @@ public class GameModel {
                 colliderChain.collide(gameObjects.get(i), gameObjects.get(j));
             }
         }
+    }
+
+    /**
+     * 初始化
+     */
+    private void init() {
+        // 初始化游戏工厂
+        String gameFactoryName = PropertyUtils.getString("gameFactory");
+        try {
+            gameFactory = (GameFactory) Class.forName(gameFactoryName).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // 初始化我方坦克
+        mainTank = gameFactory.createTank(200, 100, Dir.DOWN, Group.GOOD, this);
+
+        // 初始化敌方坦克
+        int initTankCount = PropertyUtils.getInt("initTankCount");
+        for (int i = 0; i < initTankCount; i++) {
+            add(gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
+        }
+
+        // 初始化墙
+        add(new DefaultWall(150, 150, 200, 50));
+        add(new DefaultWall(600, 150, 200, 50));
+        add(new RectWall(300, 500, 50, 200));
+        add(new RectWall(600, 500, 50, 200));
     }
 
     /**
