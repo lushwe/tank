@@ -5,6 +5,8 @@ import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.factory.GameFactory;
 import com.lushwe.tank.model.Tank;
+import com.lushwe.tank.model.def.DefaultWall;
+import com.lushwe.tank.model.rect.RectWall;
 import com.lushwe.tank.util.PropertyUtils;
 
 import java.awt.*;
@@ -58,6 +60,12 @@ public class GameModel {
         for (int i = 0; i < initTankCount; i++) {
             this.gameObjects.add(this.gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
         }
+
+        // 初始化墙
+        add(new DefaultWall(150, 150, 200, 50));
+        add(new DefaultWall(600, 150, 200, 50));
+        add(new RectWall(300, 500, 50, 200));
+        add(new RectWall(600, 500, 50, 200));
     }
 
     /**
