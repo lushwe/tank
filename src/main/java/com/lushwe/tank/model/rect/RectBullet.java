@@ -31,26 +31,23 @@ public class RectBullet extends Bullet {
      */
     private Group group;
 
-    private GameModel gm;
-
     /**
      * 活着
      */
     private boolean living = true;
 
-    public RectBullet(int x, int y, Dir dir, Group group, GameModel gm) {
+    public RectBullet(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        this.gm.add(this);
+        GameModel.getInstance().add(this);
     }
 
     /**
@@ -62,7 +59,7 @@ public class RectBullet extends Bullet {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
 
         //
@@ -109,11 +106,6 @@ public class RectBullet extends Bullet {
     @Override
     public Group getGroup() {
         return group;
-    }
-
-    @Override
-    public GameModel getGm() {
-        return gm;
     }
 
     @Override
