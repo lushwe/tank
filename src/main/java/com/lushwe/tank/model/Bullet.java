@@ -1,6 +1,5 @@
 package com.lushwe.tank.model;
 
-import com.lushwe.tank.GameModel;
 import com.lushwe.tank.GameObject;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.util.ResourceUtils;
@@ -20,8 +19,6 @@ public abstract class Bullet extends GameObject {
     public static int HEIGHT = ResourceUtils.bulletD.getHeight();
 
     public abstract Group getGroup();
-
-    public abstract GameModel getGm();
 
     public abstract Rectangle getRect();
 
