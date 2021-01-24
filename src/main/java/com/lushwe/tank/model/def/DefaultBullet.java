@@ -33,28 +33,22 @@ public class DefaultBullet extends Bullet {
     private Group group;
 
     /**
-     * 游戏模型对象
-     */
-    private GameModel gm;
-
-    /**
      * 活着
      */
     private boolean living = true;
 
-    public DefaultBullet(int x, int y, Dir dir, Group group, GameModel gm) {
+    public DefaultBullet(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        this.gm.add(this);
+        GameModel.getInstance().add(this);
     }
 
     /**
@@ -66,7 +60,7 @@ public class DefaultBullet extends Bullet {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
 
         switch (dir) {
@@ -137,11 +131,6 @@ public class DefaultBullet extends Bullet {
     @Override
     public Group getGroup() {
         return group;
-    }
-
-    @Override
-    public GameModel getGm() {
-        return gm;
     }
 
     public boolean isLiving() {
