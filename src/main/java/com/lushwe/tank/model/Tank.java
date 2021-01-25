@@ -1,6 +1,5 @@
 package com.lushwe.tank.model;
 
-import com.lushwe.tank.GameModel;
 import com.lushwe.tank.GameObject;
 import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
@@ -36,8 +35,6 @@ public abstract class Tank extends GameObject {
     public abstract void setMoving(boolean moving);
 
     public abstract Group getGroup();
-
-    public abstract GameModel getGm();
 
     public abstract Rectangle getRect();
 
