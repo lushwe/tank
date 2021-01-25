@@ -49,16 +49,13 @@ public class DefaultTank extends Tank {
      */
     private Random random = new Random();
 
-    private GameModel gm;
-
     private FireStrategy fs;
 
-    public DefaultTank(int x, int y, Dir dir, Group group, GameModel gm) {
+    public DefaultTank(int x, int y, Dir dir, Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
@@ -72,6 +69,8 @@ public class DefaultTank extends Tank {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        GameModel.getInstance().add(this);
     }
 
     /**
@@ -83,7 +82,7 @@ public class DefaultTank extends Tank {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
 
         switch (dir) {
@@ -201,10 +200,6 @@ public class DefaultTank extends Tank {
 
     public void setMoving(boolean moving) {
         this.moving = moving;
-    }
-
-    public GameModel getGm() {
-        return gm;
     }
 
     @Override
