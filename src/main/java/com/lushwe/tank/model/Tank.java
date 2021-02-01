@@ -1,10 +1,13 @@
 package com.lushwe.tank.model;
 
+import com.lushwe.tank.GameModel;
 import com.lushwe.tank.GameObject;
 import com.lushwe.tank.TankFrame;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.def.DefaultTank;
+import com.lushwe.tank.strategy.FireStrategy;
+import com.lushwe.tank.util.PropertyUtils;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
@@ -24,19 +27,69 @@ public abstract class Tank extends GameObject {
     protected int oldX;
     protected int oldY;
 
-    public abstract int getX();
+    /**
+     * 方向
+     */
+    protected Dir dir;
 
-    public abstract int getY();
+    /**
+     * 阵营
+     */
+    protected Group group;
 
-    public abstract Dir getDir();
+    /**
+     * 矩形
+     */
+    protected Rectangle rect;
 
-    public abstract void setDir(Dir dir);
+    /**
+     * 开火策略
+     */
+    protected FireStrategy fs;
+
+    public Tank(int x, int y, Dir dir, Group group) {
+        this.x = x;
+        this.y = y;
+        this.dir = dir;
+        this.group = group;
+        this.rect = new Rectangle(x, y, WIDTH, HEIGHT);
+
+        // 初始化开火策略
+        String fsName = PropertyUtils.getString(this.group.name().toLowerCase() + "FS");
+        try {
+            fs = (FireStrategy) Class.forName(fsName).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        GameModel.getInstance().add(this);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Dir getDir() {
+        return dir;
+    }
+
+    public void setDir(Dir dir) {
+        this.dir = dir;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
 
     public abstract void setMoving(boolean moving);
-
-    public abstract Group getGroup();
-
-    public abstract Rectangle getRect();
 
     public abstract void die();
 
