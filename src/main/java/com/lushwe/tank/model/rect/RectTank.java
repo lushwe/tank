@@ -21,18 +21,6 @@ public class RectTank extends Tank {
 
     private static final int SPEED = 2;
 
-    private Rectangle rect = new Rectangle();
-
-    /**
-     * 方向
-     */
-    private Dir dir;
-
-    /**
-     * 阵营
-     */
-    private Group group;
-
     /**
      * 移动中
      */
@@ -48,28 +36,8 @@ public class RectTank extends Tank {
      */
     private Random random = new Random();
 
-    private FireStrategy fs;
-
     public RectTank(int x, int y, Dir dir, Group group) {
-        this.x = x;
-        this.y = y;
-        this.dir = dir;
-        this.group = group;
-
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
-        rect.height = HEIGHT;
-
-        // 初始化开火策略
-        String fsName = PropertyUtils.getString(this.group.name().toLowerCase() + "FS");
-        try {
-            fs = (FireStrategy) Class.forName(fsName).getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        GameModel.getInstance().add(this);
+        super(x, y, dir, group);
     }
 
     /**
