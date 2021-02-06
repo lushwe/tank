@@ -1,6 +1,5 @@
 package com.lushwe.tank.model.def;
 
-import com.lushwe.tank.Audio;
 import com.lushwe.tank.GameModel;
 import com.lushwe.tank.model.Explode;
 import com.lushwe.tank.util.ResourceUtils;
@@ -16,16 +15,10 @@ import java.awt.*;
  */
 public class DefaultExplode extends Explode {
 
-    private GameModel gm;
-
     private int step = 0;
 
-    public DefaultExplode(int x, int y, GameModel gm) {
-        this.x = x;
-        this.y = y;
-        this.gm = gm;
-
-        new Thread(() -> new Audio("audio/explode.wav").play()).start();
+    public DefaultExplode(int x, int y) {
+        super(x, y);
     }
 
     @Override
@@ -34,7 +27,7 @@ public class DefaultExplode extends Explode {
         g.drawImage(ResourceUtils.explodes[step++], x, y, null);
 
         if (step >= ResourceUtils.explodes.length) {
-            this.gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
     }
 }
