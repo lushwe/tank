@@ -1,6 +1,5 @@
 package com.lushwe.tank.model.rect;
 
-import com.lushwe.tank.Audio;
 import com.lushwe.tank.GameModel;
 import com.lushwe.tank.model.Explode;
 
@@ -15,16 +14,10 @@ import java.awt.*;
  */
 public class RectExplode extends Explode {
 
-    private GameModel gm;
-
     private int step = 0;
 
-    public RectExplode(int x, int y, GameModel gm) {
-        this.x = x;
-        this.y = y;
-        this.gm = gm;
-
-        new Thread(() -> new Audio("audio/explode.wav").play()).start();
+    public RectExplode(int x, int y) {
+        super(x, y);
     }
 
     @Override
@@ -38,7 +31,7 @@ public class RectExplode extends Explode {
         g.setColor(color);
 
         if (step >= 16) {
-            this.gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
     }
 }

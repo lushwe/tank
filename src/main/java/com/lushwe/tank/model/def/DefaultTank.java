@@ -4,8 +4,6 @@ import com.lushwe.tank.GameModel;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Tank;
-import com.lushwe.tank.strategy.FireStrategy;
-import com.lushwe.tank.util.PropertyUtils;
 import com.lushwe.tank.util.ResourceUtils;
 
 import java.awt.*;
@@ -22,18 +20,6 @@ public class DefaultTank extends Tank {
 
     private static final int SPEED = 2;
 
-    private Rectangle rect = new Rectangle();
-
-    /**
-     * 方向
-     */
-    private Dir dir;
-
-    /**
-     * 阵营
-     */
-    private Group group;
-
     /**
      * 移动中
      */
@@ -49,29 +35,8 @@ public class DefaultTank extends Tank {
      */
     private Random random = new Random();
 
-    private GameModel gm;
-
-    private FireStrategy fs;
-
-    public DefaultTank(int x, int y, Dir dir, Group group, GameModel gm) {
-        this.x = x;
-        this.y = y;
-        this.dir = dir;
-        this.group = group;
-        this.gm = gm;
-
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
-        rect.height = HEIGHT;
-
-        // 初始化开火策略
-        String fsName = PropertyUtils.getString(this.group.name().toLowerCase() + "FS");
-        try {
-            fs = (FireStrategy) Class.forName(fsName).getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public DefaultTank(int x, int y, Dir dir, Group group) {
+        super(x, y, dir, group);
     }
 
     /**
@@ -83,7 +48,7 @@ public class DefaultTank extends Tank {
     public void paint(Graphics g) {
 
         if (!living) {
-            gm.remove(this);
+            GameModel.getInstance().remove(this);
         }
 
         switch (dir) {
@@ -179,36 +144,8 @@ public class DefaultTank extends Tank {
         this.living = false;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public Dir getDir() {
-        return dir;
-    }
-
-    public void setDir(Dir dir) {
-        this.dir = dir;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
 
-    public GameModel getGm() {
-        return gm;
-    }
-
-    @Override
-    public Rectangle getRect() {
-        return rect;
-    }
 }

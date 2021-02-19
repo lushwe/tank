@@ -5,7 +5,7 @@ import com.lushwe.tank.model.Wall;
 import java.awt.*;
 
 /**
- * 说明：TODO 写点注释吧
+ * 说明：绿色墙
  *
  * @author Jack Liu
  * @date 2021/1/16 下午10:48

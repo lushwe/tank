@@ -1,6 +1,5 @@
 package com.lushwe.tank.factory;
 
-import com.lushwe.tank.GameModel;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Bullet;
@@ -20,17 +19,17 @@ import com.lushwe.tank.model.def.DefaultTank;
 public class DefaultGameFactory implements GameFactory {
 
     @Override
-    public Tank createTank(int x, int y, Dir dir, Group group, GameModel gm) {
-        return new DefaultTank(x, y, dir, group, gm);
+    public Tank createTank(int x, int y, Dir dir, Group group) {
+        return new DefaultTank(x, y, dir, group);
     }
 
     @Override
-    public Bullet createBullet(int x, int y, Dir dir, Group group, GameModel gm) {
-        return new DefaultBullet(x, y, dir, group, gm);
+    public Bullet createBullet(int x, int y, Dir dir, Group group) {
+        return new DefaultBullet(x, y, dir, group);
     }
 
     @Override
-    public Explode createExplode(int x, int y, GameModel gm) {
-        return new DefaultExplode(x, y, gm);
+    public Explode createExplode(int x, int y) {
+        return new DefaultExplode(x, y);
     }
 }

@@ -19,38 +19,8 @@ public class RectBullet extends Bullet {
 
     private static final int SPEED = 6;
 
-    Rectangle rect = new Rectangle();
-
-    /**
-     * 方向
-     */
-    private Dir dir;
-
-    /**
-     * 阵营
-     */
-    private Group group;
-
-    private GameModel gm;
-
-    /**
-     * 活着
-     */
-    private boolean living = true;
-
-    public RectBullet(int x, int y, Dir dir, Group group, GameModel gm) {
-        this.x = x;
-        this.y = y;
-        this.dir = dir;
-        this.group = group;
-        this.gm = gm;
-
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
-        rect.height = HEIGHT;
-
-        this.gm.add(this);
+    public RectBullet(int x, int y, Dir dir, Group group) {
+        super(x, y, dir, group);
     }
 
     /**
@@ -61,8 +31,8 @@ public class RectBullet extends Bullet {
     @Override
     public void paint(Graphics g) {
 
-        if (!living) {
-            gm.remove(this);
+        if (!isLiving()) {
+            GameModel.getInstance().remove(this);
         }
 
         //
@@ -81,7 +51,7 @@ public class RectBullet extends Bullet {
      */
     private void move() {
 
-        switch (dir) {
+        switch (getDir()) {
             case LEFT:
                 x -= SPEED;
                 break;
@@ -104,27 +74,5 @@ public class RectBullet extends Bullet {
             // 移出窗口，死亡
             living = false;
         }
-    }
-
-    @Override
-    public Group getGroup() {
-        return group;
-    }
-
-    @Override
-    public GameModel getGm() {
-        return gm;
-    }
-
-    @Override
-    public Rectangle getRect() {
-        return rect;
-    }
-
-    /**
-     * 死亡
-     */
-    public void die() {
-        this.living = false;
     }
 }

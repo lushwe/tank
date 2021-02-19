@@ -1,5 +1,6 @@
 package com.lushwe.tank.collider;
 
+import com.lushwe.tank.GameModel;
 import com.lushwe.tank.GameObject;
 import com.lushwe.tank.model.Bullet;
 import com.lushwe.tank.model.Tank;
@@ -37,7 +38,7 @@ public class BulletTankCollider implements Collider {
             // 添加爆炸
             int x = tank.getX() + DefaultTank.WIDTH / 2 - DefaultExplode.WIDTH / 2;
             int y = tank.getY() + DefaultTank.HEIGHT / 2 - DefaultExplode.HEIGHT / 2;
-            bullet.getGm().add(bullet.getGm().getGameFactory().createExplode(x, y, bullet.getGm()));
+            GameModel.getInstance().getGameFactory().createExplode(x, y);
             return true;
         }
         return false;

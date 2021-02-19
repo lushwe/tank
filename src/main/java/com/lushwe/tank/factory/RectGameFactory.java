@@ -20,17 +20,17 @@ import com.lushwe.tank.model.rect.RectTank;
 public class RectGameFactory implements GameFactory {
 
     @Override
-    public Tank createTank(int x, int y, Dir dir, Group group, GameModel gm) {
-        return new RectTank(x, y, dir, group, gm);
+    public Tank createTank(int x, int y, Dir dir, Group group) {
+        return new RectTank(x, y, dir, group);
     }
 
     @Override
-    public Bullet createBullet(int x, int y, Dir dir, Group group, GameModel gm) {
-        return new RectBullet(x, y, dir, group, gm);
+    public Bullet createBullet(int x, int y, Dir dir, Group group) {
+        return new RectBullet(x, y, dir, group);
     }
 
     @Override
-    public Explode createExplode(int x, int y, GameModel gm) {
-        return new RectExplode(x, y, gm);
+    public Explode createExplode(int x, int y) {
+        return new RectExplode(x, y);
     }
 }
