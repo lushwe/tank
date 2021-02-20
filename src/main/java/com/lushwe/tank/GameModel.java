@@ -38,14 +38,14 @@ public class GameModel {
     private List<GameObject> gameObjects = new ArrayList<>();
 
     /**
-     * 游戏工厂
-     */
-    private GameFactory gameFactory;
-
-    /**
      * 碰撞器链
      */
     private ColliderChain colliderChain = new ColliderChain();
+
+    /**
+     * 游戏工厂
+     */
+    private GameFactory gameFactory;
 
     static {
         INSTANCE.init();
@@ -56,6 +56,11 @@ public class GameModel {
     }
 
 
+    /**
+     * 获取游戏模型实例对象
+     *
+     * @return
+     */
     public static GameModel getInstance() {
         return INSTANCE;
     }
@@ -117,19 +122,19 @@ public class GameModel {
         }
 
         // 初始化我方坦克
-        mainTank = gameFactory.createTank(200, 100, Dir.DOWN, Group.GOOD, this);
+        mainTank = gameFactory.createTank(200, 100, Dir.DOWN, Group.GOOD);
 
         // 初始化敌方坦克
         int initTankCount = PropertyUtils.getInt("initTankCount");
         for (int i = 0; i < initTankCount; i++) {
-            add(gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD, this));
+            gameFactory.createTank(100 + 100 * i, 200, Dir.DOWN, Group.BAD);
         }
 
         // 初始化墙
-        add(new DefaultWall(150, 150, 200, 50));
-        add(new DefaultWall(600, 150, 200, 50));
-        add(new RectWall(300, 500, 50, 200));
-        add(new RectWall(600, 500, 50, 200));
+        new DefaultWall(150, 150, 200, 50);
+        new DefaultWall(600, 150, 200, 50);
+        new RectWall(300, 500, 50, 200);
+        new RectWall(600, 500, 50, 200);
     }
 
     /**
