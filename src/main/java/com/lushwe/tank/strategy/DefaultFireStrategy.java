@@ -1,6 +1,7 @@
 package com.lushwe.tank.strategy;
 
 import com.lushwe.tank.Audio;
+import com.lushwe.tank.GameModel;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Bullet;
 import com.lushwe.tank.model.Tank;
@@ -20,7 +21,7 @@ public class DefaultFireStrategy implements FireStrategy {
         int x = tank.getX() + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
         int y = tank.getY() + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
 
-        tank.getGm().getGameFactory().createBullet(x, y, tank.getDir(), tank.getGroup(), tank.getGm());
+        GameModel.getInstance().getGameFactory().createBullet(x, y, tank.getDir(), tank.getGroup());
 
         if (tank.getGroup() == Group.GOOD) {
             new Thread(() -> new Audio("audio/tank_fire.wav").play()).start();

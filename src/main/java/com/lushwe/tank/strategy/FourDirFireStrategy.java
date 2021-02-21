@@ -1,6 +1,7 @@
 package com.lushwe.tank.strategy;
 
 import com.lushwe.tank.Audio;
+import com.lushwe.tank.GameModel;
 import com.lushwe.tank.enums.Dir;
 import com.lushwe.tank.enums.Group;
 import com.lushwe.tank.model.Bullet;
@@ -23,7 +24,7 @@ public class FourDirFireStrategy implements FireStrategy {
 
 
         for (Dir dir : Dir.values()) {
-            tank.getGm().getGameFactory().createBullet(x, y, dir, tank.getGroup(), tank.getGm());
+            GameModel.getInstance().getGameFactory().createBullet(x, y, dir, tank.getGroup());
         }
 
         if (tank.getGroup() == Group.GOOD) {
